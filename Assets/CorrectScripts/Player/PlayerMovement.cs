@@ -24,6 +24,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         character.SimpleMove(inputManager.ReadMovementValue() * speed * transform.forward * Time.deltaTime);
-        transform.Rotate(transform.up * inputManager.ReadRotationValue() * rotationSpeed * Time.deltaTime);
+        //transform.Rotate(transform.up * inputManager.ReadRotationValue() * rotationSpeed * Time.deltaTime);
     }
 }

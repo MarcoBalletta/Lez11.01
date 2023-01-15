@@ -20,11 +20,19 @@ public class ObstacleAvoidance : MonoBehaviour
     {
         if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayLength, layerMask, QueryTriggerInteraction.Collide))
         {
-            if (inputManager.actions.PlayerActions.Movement.enabled) inputManager.CannotMove();
+            if (inputManager.actions.PlayerActions.Movement.enabled)
+            {
+                inputManager.CannotMove();
+                UIManager.instance.StoppedMovement();
+            }
         }
         else
         {
-            if (!inputManager.actions.PlayerActions.Movement.enabled) inputManager.CanMove();
+            if (!inputManager.actions.PlayerActions.Movement.enabled)
+            {
+                inputManager.CanMove();
+                UIManager.instance.ResumedMovement();
+            }
         }
     }
 }

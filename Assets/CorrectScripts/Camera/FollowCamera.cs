@@ -5,12 +5,14 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
 
-    public PlayerMovement player;
-    public Vector3 offset;
+    public Transform player;
+    public float lerpVelocity;
+    public float armLength;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
+        //transform.LookAt(player);
+        transform.position = Vector3.Lerp(transform.position, player.position + (player.transform.forward*-1 * armLength), lerpVelocity);
     }
 }
