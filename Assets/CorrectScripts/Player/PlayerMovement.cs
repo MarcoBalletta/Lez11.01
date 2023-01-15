@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         character.SimpleMove(inputManager.ReadMovementValue() * speed * transform.forward * Time.deltaTime);
+        if (!character.isGrounded) character.SimpleMove(transform.up * Physics.gravity.y * Time.deltaTime);
         //transform.Rotate(transform.up * inputManager.ReadRotationValue() * rotationSpeed * Time.deltaTime);
     }
 }
