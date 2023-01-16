@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI goBackText;
+    [SerializeField] private TextMeshProUGUI interactText;
     public static UIManager instance;
 
     /*public delegate void OnStopMovement();
@@ -36,6 +37,16 @@ public class UIManager : MonoBehaviour
     public void ResumedMovement()
     {
         goBackText.gameObject.SetActive(false);
+    }
+
+    public void CanInteract()
+    {
+        interactText.gameObject.SetActive(true);
+    }
+
+    public void CannotInteract()
+    {
+        interactText.gameObject.SetActive(false);
     }
 
 }

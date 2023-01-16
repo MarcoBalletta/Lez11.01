@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     public InputActions actions;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         actions = new InputActions();
         actions.Enable();
