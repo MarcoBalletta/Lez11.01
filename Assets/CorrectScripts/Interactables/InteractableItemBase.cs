@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class InteractableItemBase : MonoBehaviour, IInteractableItem
 {
-    public abstract void Interact();
+    public abstract void InteractItem();
 }
 
 public interface IInteractableItem
 {
-    public void Interact();
+    public void InteractItem();
 }

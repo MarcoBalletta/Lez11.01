@@ -24,12 +24,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         character = GetComponent<CharacterController>();
-        Debug.Log(inputManager + " input");
-        inputManager.actions.PlayerActions.Interact.performed += Interact;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         character.SimpleMove(inputManager.ReadMovementValue() * speed * transform.forward * Time.deltaTime);
         if (!character.isGrounded) character.SimpleMove(transform.up * Physics.gravity.y * Time.deltaTime);
@@ -40,17 +38,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
         {
-            interactable.Interact();
-        }
-    }*/
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
-        {
-            //can interact
-            //interactable.Interact();
-            UIManager.instance.CanInteract();
+            if(interactable is InteractableItemBase) UIManager.instance.SetInteractText(constants.textInteractInteractable);
+            else if(interactable is ItemBase) UIManager.instance.SetInteractText(constants.textInteractItem);
+            UIManager.instance.CanInteract(interactable.ToString());
             interactableItem = interactable;
         }
     }
@@ -59,21 +49,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
         {
-            //can interact
-            //interactable.Interact();
             UIManager.instance.CannotInteract();
             interactableItem = null;
         }
-    }
+    }*/
 
-    private void Interact(InputAction.CallbackContext context)
-    {
-        /*
-         * if(interactableItem == null) return;
-         * interactableItem.Interact();
-        */
-        interactableItem?.Interact();
-        interactableItem = null;
-        UIManager.instance.CannotInteract();
-    }
+
 }

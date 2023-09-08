@@ -12,7 +12,7 @@ public class InteractableDoor : InteractableItemBase
         anim = GetComponent<Animator>();
     }
 
-    public override void Interact()
+    public override void InteractItem()
     {
         anim.SetTrigger("Transition");
     }

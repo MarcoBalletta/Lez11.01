@@ -39,6 +39,16 @@ public class InputManager : MonoBehaviour
         actions.PlayerActions.Rotation.Disable();
     }
 
+    public void CanShoot()
+    {
+        actions.PlayerActions.Shoot.Enable();
+    }
+
+    public void CannotShoot()
+    {
+        actions.PlayerActions.Shoot.Disable();
+    }
+
     public float ReadRotationValue()
     {
         return actions.PlayerActions.Rotation.ReadValue<float>();

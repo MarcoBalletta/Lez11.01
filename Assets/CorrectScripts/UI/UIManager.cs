@@ -39,14 +39,20 @@ public class UIManager : MonoBehaviour
         goBackText.gameObject.SetActive(false);
     }
 
-    public void CanInteract()
+    public void CanInteract(string interactable)
     {
+        interactText.text += constants.textInteractInteractable + interactable;
         interactText.gameObject.SetActive(true);
     }
 
     public void CannotInteract()
     {
         interactText.gameObject.SetActive(false);
+    }
+
+    public void SetInteractText(string interactable)
+    {
+        interactText.text = interactable;
     }
 
 }
